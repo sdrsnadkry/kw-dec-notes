@@ -2,14 +2,21 @@ import React from "react";
 
 import { useFormik } from "formik";
 
-const Notes = () => {
+const Notes = (props) => {
   const formik = useFormik({
     initialValues: {
       title: "",
       description: "",
     },
     onSubmit: function (values) {
-      console.log(values);
+      const updatedValue = {
+        id: Math.random() * 1000,
+        title: values.title,
+        description: values.description,
+        date: new Date().toDateString()
+      };
+
+      props.handleAddToNotes(updatedValue);
     },
   });
 

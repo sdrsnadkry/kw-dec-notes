@@ -9,7 +9,8 @@ const NoteItem = (props) => {
     >
       <div className={`px-2 ${props.active && "text-white"}`}>
         <h1>{props.title}</h1>
-        <p>Lorem ipsum dolor sit, amet consectetur</p>
+        <p className="mt-1">{props.description}</p>
+        <p className="text-sm mt-1">{props.date}</p>
       </div>
     </li>
   );

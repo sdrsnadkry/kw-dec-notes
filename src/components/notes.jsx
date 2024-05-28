@@ -30,6 +30,13 @@ const Notes = (props) => {
           onChange={formik.handleChange}
           className="bg-slate-300 outline-none border-none w-full py-4 px-4 rounded-lg"
         />
+        <input
+          type="date"
+          name="title"
+          required
+          onChange={formik.handleChange}
+          className="ml-2 bg-slate-300 outline-none border-none w-full py-4 px-4 rounded-lg"
+        />
         <button
           className="ml-6 bg-slate-800 px-10 py-4 rounded-lg text-white"
           type="submit"

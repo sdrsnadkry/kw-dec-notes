@@ -16,7 +16,7 @@ const Sidebar = (props) => {
           type="text"
           value={props.searchText}
           onChange={function (event) {
-            props.setSearchText(event.target.value);
+            props.setSearchText(event.target.value);x
           }}
           placeholder="Search"
           className="w-full py-4 px-4 outline-none border-none rounded-lg"

@@ -1,48 +1,23 @@
-import { useEffect, useState } from "react";
-import Notes from "./components/notes";
-import Sidebar from "./components/sidebar";
-import { notes } from "./components/data";
+import React from "react";
+import Header from "./components/header";
 
-function App() {
-  const [searchText, setSearchText] = useState("");
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/home";
+import AboutUs from "./pages/aboutUs";
+import ContactUs from "./pages/contactUs";
 
-  const [listOfNotes, setListOfNotes] = useState(notes);
-
-  useEffect(() => {
-    const newData = notes?.filter((item) => {
-      return (
-        item.title.toLowerCase().includes(searchText.toLowerCase()) ||
-        item.description.toLowerCase().includes(searchText.toLowerCase())
-      );
-    });
-
-    setListOfNotes(newData);
-  }, [searchText]);
-
-  const handleAddToNotes = (formData) => {
-    const newArray = [formData, ...listOfNotes]
-
-    setListOfNotes(newArray)
-
-    console.log(newArray)
-  
-    
-  }
-
+const App = () => {
   return (
-    <div className="grid grid-cols-12">
-      <div className="col-span-3 bg-slate-300">
-        <Sidebar
-          listOfNotes={listOfNotes}
-          searchText={searchText}
-          setSearchText={setSearchText}
-        />
-      </div>
-      <div className="col-span-9 bg-slate-400">
-        <Notes handleAddToNotes={handleAddToNotes} />
-      </div>
-    </div>
+    <>
+      <Header />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/contact-us" element={<ContactUs />} />
+      </Routes>
+    </>
   );
-}
+};
 
 export default App;

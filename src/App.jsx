@@ -8,7 +8,7 @@ import ContactUs from "./pages/contactUs";
 
 const App = () => {
   return (
-    <>
+    <div className="relative">
       <Header />
 
       <Routes>
@@ -16,7 +16,7 @@ const App = () => {
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/contact-us" element={<ContactUs />} />
       </Routes>
-    </>
+    </div>
   );
 };
 

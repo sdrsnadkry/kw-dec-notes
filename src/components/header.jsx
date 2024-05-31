@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Link } from "react-router-dom";
 
 const Header = () => {
+  const [headerOpen, setHeaderOpen] = useState(false);
+
+  const toggleHeader = () => {
+    setHeaderOpen(!headerOpen);
+  };
+
   return (
     <div className="">
       <div className="flex items-center py-2 px-4 justify-between">
@@ -23,28 +29,33 @@ const Header = () => {
         </ul>
 
         <div className="lg:hidden">
-          <button className="bg-blue-500 text-white px-4 py-2 rounded-lg">
+          <button
+            className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+            onClick={toggleHeader}
+          >
             =
           </button>
         </div>
       </div>
 
-      <div className="lg:hidden absolute top-0 left-0 bottom-0 right-0 bg-white">
-        <div className="w-full h-full relative">
-          <ul className="flex flex-col justify-around items-center flex-1 pt-10">
-            <li className="py-6 ">
-              <Link to="/">Home</Link>
-            </li>
-            <li className="py-6 ">
-              <Link to="/about-us">About Us</Link>
-            </li>
-            <li className="py-6 ">
-              <Link to="/contact-us">Contact Us</Link>
-            </li>
-          </ul>
+      <div className={`${headerOpen ? 'block': 'hidden'}`}>
+        <div className="lg:hidden absolute top-0 left-0 bottom-0 right-0 bg-white block">
+          <div className="w-full h-full relative">
+            <ul className="flex flex-col justify-around items-center flex-1 pt-10">
+              <li className="py-6 ">
+                <Link to="/">Home</Link>
+              </li>
+              <li className="py-6 ">
+                <Link to="/about-us">About Us</Link>
+              </li>
+              <li className="py-6 ">
+                <Link to="/contact-us">Contact Us</Link>
+              </li>
+            </ul>
 
-          <div className="absolute top-0 right-0">
-            <button>Close</button>
+            <div className="absolute top-0 right-0">
+              <button onClick={toggleHeader}>Close</button>
+            </div>
           </div>
         </div>
       </div>
